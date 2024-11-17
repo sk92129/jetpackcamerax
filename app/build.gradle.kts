@@ -9,8 +9,8 @@ android {
 
     defaultConfig {
         applicationId = "com.kangengineering.jetpackcamera"
-        minSdk = 35
-        targetSdk = 35
+        minSdk = 34
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 

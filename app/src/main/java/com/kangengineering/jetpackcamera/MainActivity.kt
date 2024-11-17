@@ -28,6 +28,10 @@ import com.kangengineering.jetpackcamera.ui.theme.JetpackCameraTheme
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberImagePainter
+import com.kangengineering.jetpackcamera.camera.CameraCapture
+import com.kangengineering.jetpackcamera.gallery.GallerySelect
+import androidx.core.net.toUri
+
 
 @ExperimentalCoilApi
 @ExperimentalCoroutinesApi
@@ -43,22 +47,6 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    JetpackCameraTheme {
-        Greeting("Android")
     }
 }
 
@@ -89,22 +77,22 @@ fun MainContent(modifier: Modifier = Modifier) {
     } else {
         var showGallerySelect by remember { mutableStateOf(false) }
         if (showGallerySelect) {
-//            GallerySelect(
-//                modifier = modifier,
-//                onImageUri = { uri ->
-//                    showGallerySelect = false
-//                    imageUri = uri
-//                }
-//            )
+            GallerySelect(
+                modifier = modifier,
+                onImageUri = { uri ->
+                    showGallerySelect = false
+                    imageUri = uri
+                }
+            )
         } else {
             Box(modifier = modifier) {
 
-//                CameraCapture(
-//                    modifier = modifier,
-//                    onImageFile = { file ->
-//                        imageUri = file.toUri()
-//                    }
-//                )
+                CameraCapture(
+                    modifier = modifier,
+                    onImageFile = { file ->
+                        imageUri = file.toUri()
+                    }
+                )
                 Button(
                     modifier = Modifier
                         .align(Alignment.TopCenter)
